@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>@yield('title', 'Portal PPD')</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -28,7 +28,7 @@
                             aria-label="toggle menu">
                             <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
                                 <path fill-rule="evenodd"
-                                    d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z">
+                                    d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z">
                                 </path>
                             </svg>
                         </button>
@@ -38,31 +38,35 @@
                 <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
                 <div :class="isOpen ? 'flex' : 'hidden'"
                     class="flex-col mt-8 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0">
-                    <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
+                    <a class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-blue-500 hover:text-red-900"
                         href="/">Home</a>
-                        <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
-                        {{-- href="{{ route('login') }}">login</a> --}}
-                    <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
-                        {{-- href="{{ route('categories.index') }}">Combos</a> --}}
-                    <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
-                        {{-- href="{{ route('menus.index') }}">Our Menu</a> --}}
-                    <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
-                        {{-- href="{{ route('reservations.step.one') }}">Make Reservation</a> --}}
-
+                    <a class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-blue-500 hover:text-red-900"
+                        href="{{ route('aplicacion.index') }}">Aplicaciones</a>
+                    <a class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-blue-500 hover:text-green-400"
+                        href="{{ route('arquitectura.index') }}">Arquitecturas</a>
+                    <a class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-blue-500 hover:text-green-400"
+                        href="{{ route('evolucion.index') }}">Evolución</a>
+                    <a class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-blue-500 hover:text-green-400"
+                        href="{{ route('tecnica.index') }}">Técnicas</a>
+                    <a class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-blue-500 hover:text-green-400"
+                        href="{{ route('referencias.index') }}">Referencias</a>
                 </div>
             </nav>
         </div>
         <div class="font-sans text-gray-900 antialiased min-h-screen">
-            {{-- {{ $slot }} --}}
+            <!-- Main Content -->
+            <main class="flex-grow container mx-auto px-4 py-8">
+                @yield('content')
+            </main>
         </div>
         <footer class="bg-gray-800 border-t border-gray-200">
             <div class="container flex flex-wrap items-center justify-center px-4 py-8 mx-auto lg:justify-between">
                 <div class="flex flex-wrap justify-center">
                     <ul class="flex items-center space-x-4 text-white">
-                        <li>Home</li>
-                        <li>About</li>
-                        <li>Contact</li>
-                        <li>Terms</li>
+                        <li>Inicio</li>
+                        <li>Acerca de</li>
+                        <li>Contacto</li>
+                        <li>Términos</li>
                     </ul>
                 </div>
                 <div class="flex justify-center mt-4 lg:mt-0">
@@ -99,7 +103,5 @@
                 </div>
             </div>
         </footer>
-
     </body>
 </html>
-
